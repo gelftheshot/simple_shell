@@ -7,7 +7,7 @@
 
 char *read_command()
 {
-	int i = 0, int buffsize = 1024, int r;
+	int i = 0, buffsize = 1024, r;
 	char s = 0;
 	char *command = malloc(sizeof(char) * buffsize);
 

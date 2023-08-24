@@ -22,7 +22,7 @@ void print(char *str)
 }
 
 /**
- * printn - prints number to stdout
+ * printe - prints error to stad error
  * @str: the number to be written
  * Return: nothing it is void function
  **/
