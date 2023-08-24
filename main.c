@@ -13,6 +13,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 	char *geted;
 	int exit_stat = 1, num_line = 0;
 	char **commands;
+
 	signal(SIGINT, control_plus_c);
 
 	while (exit_stat)
@@ -25,19 +26,18 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 
 		if (geted[0] == '\0' || geted[0] == '\n')
 		{
-			
 			continue;
 		}
-	
+
 		commands = tokenizer(geted);
-		
+
 		if (*commands == NULL)
 			exit(0);
 		if (_strcmp(*commands, "exit") == 0)
 		{
 			exit_hand(commands, geted);
 		}
-	
+
 		excuter(commands, num_line, geted);
 		free(geted);
 		free(commands);

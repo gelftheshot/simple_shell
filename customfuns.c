@@ -23,7 +23,7 @@ void print(char *str)
 
 /**
  * printn - prints number to stdout
- * @i: the number to be written
+ * @str: the number to be written
  * Return: nothing it is void function
  **/
 
@@ -32,9 +32,16 @@ void printe(char *str)
 	write(STDERR_FILENO, str, _strlen(str));
 }
 
+/**
+ *printn - prints num ot stdout
+ *@i: is the number
+ *Return: void
+ **/
+
 void printn(int i)
 {
 	char j;
+
 	if (i >= 10)
 		printn(i / 10);
 	j = ((i % 10) + '0');

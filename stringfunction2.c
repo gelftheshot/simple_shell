@@ -13,8 +13,8 @@ void _putchar(char i)
 
 /**
  * _strncmp - compare two strs upto N
- * @s1: is the first string
- * @s2: is the second string
+ * @str1: is the first string
+ * @str2: is the second string
  * @n: how much we need to compare
  * Return: 0 on match and 1 otherwise
  */
