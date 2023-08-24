@@ -37,7 +37,7 @@ char *read_command()
 		i++;
 		if (i >= buffsize)
 		{
-			command = realloc(command, buffsize);
+			command = _realloc(command, buffsize, buffsize + 1);
 			if (command == NULL)
 			{
 				return (NULL);

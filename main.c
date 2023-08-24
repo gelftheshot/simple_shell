@@ -26,13 +26,18 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 
 		if (geted[0] == '\0' || geted[0] == '\n')
 		{
+			free(geted);
 			continue;
 		}
 
 		commands = tokenizer(geted);
 
 		if (*commands == NULL)
-			exit(0);
+		{
+			free(geted);
+			free(commands);
+			continue;
+		}
 		if (_strcmp(*commands, "exit") == 0)
 		{
 			exit_hand(commands, geted);
