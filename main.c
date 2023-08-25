@@ -42,9 +42,17 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 		{
 			exit_hand(commands, geted);
 		}
+
+		if (_strcmp(*commands, "env") == 0 )
+		{
+			print_env(geted, commands);
+			continue;
+		}
+
 		buff = _strdup(*commands);
 
 		excuter(commands, num_line, geted);
+
 		if (_strcmp(buff,*commands) != 0)
 		{
 			free(*commands);
