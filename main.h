@@ -36,6 +36,8 @@ void control_plus_c(int signal);
 void hashtag_handle(char *buff);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int print_env(char *geted, char **av);
+void excute_f(char *getedf, int i, FILE *fd );
+void get_from_file(char *file_command);
 /** exteral char **/
 
 extern char **environ;

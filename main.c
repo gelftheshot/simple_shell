@@ -15,6 +15,8 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 	char **commands;
 	char *buff;
 
+	if (argv[1] != NULL)
+		get_from_file(argv[1]);
 	signal(SIGINT, control_plus_c);
 	while (1)
 	{
