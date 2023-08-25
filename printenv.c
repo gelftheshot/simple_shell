@@ -7,7 +7,7 @@
 **/
 
 
-void print_env(char *geted, char **av)
+int print_env(char *geted, char **av)
 {
 	int i;
 	
@@ -19,4 +19,5 @@ void print_env(char *geted, char **av)
 	}
 	free(av);
 	free(geted);
+	return(0);
 }

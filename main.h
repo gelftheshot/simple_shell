@@ -35,7 +35,7 @@ char *_memset(char *s, char b, unsigned int n);
 void control_plus_c(int signal);
 void hashtag_handle(char *buff);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-void print_env(char *geted, char **av);
+int print_env(char *geted, char **av);
 /** exteral char **/
 
 extern char **environ;
