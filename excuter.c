@@ -12,41 +12,60 @@ int excuter(char **av, int j, char *geted)
 {
 	pid_t pid;
 	int status;
+	struct stat stat_var;
 
 	if (*av == NULL)
 		return (-1);
 
-	pid = fork();
-
-	if (pid == -1)
+	if (_strncmp(*av, "./", 2) != 0)
 	{
-		perror("forking error occured");
-		return (EXIT_FAILURE);
+		pathfinder(av);
 	}
 
-	if (pid == 0)
+	if (stat(*av, &stat_var) == 0)
 	{
+		pid = fork();
 
-		if (_strncmp(*av, "./", 2) != 0)
+		if (pid == -1)
 		{
-			pathfinder(av);
+			perror("forking error occured");
+			return (EXIT_FAILURE);
 		}
 
-		if (execve(av[0], av, environ) == -1)
+		if (pid == 0)
 		{
-			printe("./hsh: ");
-			printn(j);
-			printe(": ");
-			printe(*av);
-			printe(": ");
-			printe("not found\n");
 
-			free(av);
-			free(geted);
-			exit(EXIT_FAILURE);
+			if (execve(av[0], av, environ) == -1)
+			{
+				printe("./hsh: ");
+				printn(j);
+				printe(": ");
+				printe(*av);
+				printe(": ");
+				printe("not found\n");
+
+				free(av);
+				free(geted);
+				exit(127);
+			}
+			return (EXIT_SUCCESS);
 		}
-		return (EXIT_SUCCESS);
+
+		if (pid != 0)
+		{
+			wait(&status);
+			return(0);
+		}
 	}
-		wait(&status);
-		return (0);
+	else
+		{
+				printe("./hsh: ");
+				printn(j);
+				printe(": ");
+				printe(*av);
+				printe(": ");
+				printe("not found\n");
+				return(EXIT_FAILURE);
+		}
+		return(0);
 }

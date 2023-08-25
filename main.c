@@ -11,12 +11,12 @@
 int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 {
 	char *geted;
-	int exit_stat = 1, num_line = 0;
+	int num_line = 0;
 	char **commands;
+	char *buff;
 
 	signal(SIGINT, control_plus_c);
-
-	while (exit_stat)
+	while (1)
 	{
 
 		if (isatty(STDIN_FILENO))
@@ -42,12 +42,24 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 		{
 			exit_hand(commands, geted);
 		}
+		buff = _strdup(*commands);
 
 		excuter(commands, num_line, geted);
-		free(geted);
-		free(commands);
+		if (_strcmp(buff,*commands) != 0)
+		{
+			free(*commands);
+			free(commands);
+			free(geted);
+			free(buff);
+		}
+		else
+		{
+			free(buff);
+			free(geted);
+			free(commands);
+		}
 	}
 
-	return (exit_stat);
+	return (0);
 }
 
