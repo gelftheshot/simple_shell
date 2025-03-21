@@ -1,1 +1,1 @@
-"this is the read me file to be editer later"
+# simple bash shell terminal created using C programming language.
